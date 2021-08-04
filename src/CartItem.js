@@ -10,29 +10,51 @@ class CartItem extends React.Component {
       img: "",
     };
     // this.increaseQuantity = this.increaseQuantity.bind(this)
+    // this.testing()
   }
+  // testing(){
+  //   const promise = new Promise((resolve,reject)=>{
+  //     setTimeout(()=>{
+  //       resolve('done')
+  //     },5000)
+  //   })
+  //   promise.then(()=>{
+  //     //setState acts like synchronus call
+  //     this.setState({qty : this.state.qty +10})
+  //     this.setState({qty : this.state.qty +10})
+  //     this.setState({qty : this.state.qty +10})
+  //     console.log('this.state ', this.state)
+  //   })
+  // }
   increaseQuantity=()=>{
-      console.log('this.state',this.state);
-      // this.state.qty = this.state.qty + 1;
-      //setState form 1
-      // this.setState({
+    console.log('this.state callback',this.state)
+    // this.state.qty = this.state.qty + 1;
+    //setState form 1
+    // this.setState({
       //   qty: this.state.qty + 1,
+      // },()=>{
+      //   console.log('this.state callback',this.state)
       // })
-
+      
       //setState form 2 - if prevState required use this
       this.setState((prevState)=>{
         return {
           qty : prevState.qty + 1
         }
-      })
+      })    
+      
   }
   decreaseQuantity=()=>{
-    console.log('this.state ',this.state)
+    const {qty} = this.state
+    if(qty === 0){
+      return ;
+    }
     this.setState((prevState)=>{
-      if(prevState.qty >0 ){
+      // if(prevState.qty >0 ){
       return {
         qty : prevState.qty - 1
-      }}
+      }
+    // }
     })
   }
   deleteQuantity(){
@@ -41,6 +63,7 @@ class CartItem extends React.Component {
   render() {
     //object destructuring
     const { title, price, qty } = this.state;
+    console.log('rendering')
     return (
       <div className="cart-item">
         <div className="left-block">
