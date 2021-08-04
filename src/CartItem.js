@@ -1,17 +1,17 @@
 import React from "react";
 
 class CartItem extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      title: "Smart Phone",
-      price: 19999,
-      qty: 1,
-      img: "",
-    };
-    // this.increaseQuantity = this.increaseQuantity.bind(this)
-    // this.testing()
-  }
+  // constructor() {
+  //   super();
+  //   this.state = {
+  //     title: "Smart Phone",
+  //     price: 19999,
+  //     qty: 1,
+  //     img: "",
+  //   };
+  //   // this.increaseQuantity = this.increaseQuantity.bind(this)
+  //   // this.testing()
+  // }
   // testing(){
   //   const promise = new Promise((resolve,reject)=>{
   //     setTimeout(()=>{
@@ -62,8 +62,10 @@ class CartItem extends React.Component {
   }
   render() {
     //object destructuring
-    const { title, price, qty } = this.state;
+    // const { title, price, qty } = this.state;
+    const { qty,title, price } = this.props.product;
     console.log('rendering')
+    console.log('this.props ,', this.props)
     return (
       <div className="cart-item">
         <div className="left-block">
