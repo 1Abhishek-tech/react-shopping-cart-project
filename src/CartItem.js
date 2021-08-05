@@ -1,6 +1,6 @@
 import React from "react";
 
-class CartItem extends React.Component {
+const CartItem = (props)=> {
   // constructor() {
   //   super();
   //   this.state = {
@@ -26,51 +26,49 @@ class CartItem extends React.Component {
   //     console.log('this.state ', this.state)
   //   })
   // }
-  increaseQuantity=()=>{
-    console.log('this.state callback',this.state)
-    // this.state.qty = this.state.qty + 1;
-    //setState form 1
-    // this.setState({
-      //   qty: this.state.qty + 1,
-      // },()=>{
-      //   console.log('this.state callback',this.state)
-      // })
-      
-      //setState form 2 - if prevState required use this
-      this.setState((prevState)=>{
-        return {
-          qty : prevState.qty + 1
-        }
-      })    
-      
-  }
-  decreaseQuantity=()=>{
-    const {qty} = this.state
-    if(qty === 0){
-      return ;
-    }
-    this.setState((prevState)=>{
-      // if(prevState.qty >0 ){
-      return {
-        qty : prevState.qty - 1
-      }
-    // }
-    })
-  }
-  deleteQuantity(){
-      console.log('delete')
-  }
-  render() {
+          // increaseQuantity=()=>{
+          //   console.log('this.state callback',this.state)
+          //   // this.state.qty = this.state.qty + 1;
+          //   //setState form 1
+          //   // this.setState({
+          //     //   qty: this.state.qty + 1,
+          //     // },()=>{
+          //     //   console.log('this.state callback',this.state)
+          //     // })
+              
+          //     //setState form 2 - if prevState required use this
+          //     this.setState((prevState)=>{
+          //       return {
+          //         qty : prevState.qty + 1
+          //       }
+          //     })    
+              
+          // }
+          // decreaseQuantity=()=>{
+          //   const {qty} = this.state
+          //   if(qty === 0){
+          //     return ;
+          //   }
+          //   this.setState((prevState)=>{
+          //     // if(prevState.qty >0 ){
+          //     return {
+          //       qty : prevState.qty - 1
+          //     }
+          //   // }
+          //   })
+          // }
+ 
+  // render() {
     //object destructuring
     // const { title, price, qty } = this.state;
-    const { qty,title, price , id} = this.props.product;
-    const { product , onIncreaseQuantity , onDecreaseQuantity , onDeleteProduct} = this.props
-    console.log('rendering')
-    console.log('this.props ,', this.props)
+    const { img ,qty,title, price , id} = props.product;
+    const { product , onIncreaseQuantity , onDecreaseQuantity , onDeleteProduct} = props
+    // console.log('rendering')
+    // console.log('this.props ,', this.props)
     return (
       <div className="cart-item">
         <div className="left-block">
-          <img style={styles.images} />
+          <img style={styles.images} src={ img}/>
         </div>
         <div className="right-block">
           <div style={{ fontSize: 25 }}>{title}</div>
@@ -104,7 +102,7 @@ class CartItem extends React.Component {
         </div>
       </div>
     );
-  }
+  // }
 }
 const styles = {
   images: {
