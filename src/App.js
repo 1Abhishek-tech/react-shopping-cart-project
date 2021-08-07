@@ -170,7 +170,7 @@ class App extends React.Component {
     this.db
     .collection('products')
     .add({
-      img: '',
+      img: 'https://images-na.ssl-images-amazon.com/images/I/71KHkTS6aOL._UX625_.jpg',
       title : 'Brand New Puma Shoes',
       price : 500,
       qty : 1,
@@ -182,7 +182,41 @@ class App extends React.Component {
       console.log('Error ',error)
     })
   }
-
+  L2Hfilter=()=>{
+    this.db
+      .collection('products')
+      // .where('price','>',0)
+      .orderBy('price','asc')
+      .onSnapshot((snapshot)=>{
+        const products = snapshot.docs.map((doc)=>{
+          const data = doc.data();
+          data['id'] = doc.id;
+          return data;
+        })
+        this.setState({
+          products : products,
+          loading: false
+        })
+      })
+    }
+    H2Lfilter=()=>{
+      this.db
+      .collection('products')
+      // .where('price','>',0)
+      .orderBy('price','desc')
+      .onSnapshot((snapshot)=>{
+        const products = snapshot.docs.map((doc)=>{
+          const data = doc.data();
+          data['id'] = doc.id;
+          return data;
+        })
+        this.setState({
+          products : products,
+          loading: false
+        })
+      })
+    }  
+  
   render() {
     const {products, loading} = this.state
     return (
@@ -191,6 +225,9 @@ class App extends React.Component {
           count = {this.getCartCount()}
         />
         <button onClick={this.addProduct} style={{padding:20, fontWeight: "bold", color: "lightgrey", backgroundColor: "black", borderRadius: 30, }}>Add a Product</button>
+        <button onClick={this.L2Hfilter} style={{padding:20, fontWeight: "bold", color: "lightgrey", backgroundColor: "black", borderRadius: 30, }}>low to high</button>
+        <button onClick={this.H2Lfilter} style={{padding:20, fontWeight: "bold", color: "lightgrey", backgroundColor: "black", borderRadius: 30, }}> high to low</button>
+
 
         <Cart
           products = {products}
