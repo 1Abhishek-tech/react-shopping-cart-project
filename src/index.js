@@ -8,12 +8,12 @@ import "firebase/firestore";
 
 
 const firebaseConfig = {
-  // apiKey: "AIzaSyAgfZx7nC4igBz8TFnDlzPE4DSz3RHNcV8",
-  // authDomain: "cart-f4687.firebaseapp.com",
-  // projectId: "cart-f4687",
-  // storageBucket: "cart-f4687.appspot.com",
-  // messagingSenderId: "182126516730",
-  // appId: "1:182126516730:web:a49dacbee94bb00fc22c43"
+  apiKey: "AIzaSyAgfZx7nC4igBz8TFnDlzPE4DSz3RHNcV8",
+  authDomain: "cart-f4687.firebaseapp.com",
+  projectId: "cart-f4687",
+  storageBucket: "cart-f4687.appspot.com",
+  messagingSenderId: "182126516730",
+  appId: "1:182126516730:web:a49dacbee94bb00fc22c43"
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
